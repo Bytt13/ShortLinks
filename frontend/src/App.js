@@ -8,6 +8,7 @@ function App()
   const [error, setError] = useState(''); //Errors
   const [stats, setStats] = useState([]); //stats for the stats page
   const [showStats, setShowStats] = useState(false);
+  const api = 'https://shortlinks-hhj7.onrender.com';
 
   //to handle with the form
   const handleSubmit = async(e)=> {
@@ -24,7 +25,7 @@ function App()
     }
 
     try {
-      const response = await fetch('http://192.168.0.131:5000/short', {
+      const response = await fetch(`${api}/short`, {
         method: 'POST',
         headers : {
           'Content-Type':'application/json',
@@ -49,7 +50,7 @@ function App()
     setError('');
 
     try {
-      const response = await fetch('http://192.168.0.131:5000/stats');
+      const response = await fetch(`${api}/stats`);
       const data = await response.json();
 
       if(!response.ok)
