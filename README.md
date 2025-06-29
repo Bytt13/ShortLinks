@@ -61,12 +61,12 @@ Este projeto é dividido em duas partes: o **backend** (a cozinha) e o **fronten
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/seu-usuario/nome-do-repositorio.git](https://github.com/seu-usuario/nome-do-repositorio.git)
+    git clone [https://github.com/Bytt13/ShortLinks.git](https://github.com/Bytt13/ShortLinks.git)
     ```
 
 2.  **Navegue até a pasta do projeto:**
     ```bash
-    cd nome-do-repositorio
+    cd ShortLinks
     ```
 
 3.  **Configure o Backend (A Cozinha):**
@@ -84,7 +84,7 @@ Este projeto é dividido em duas partes: o **backend** (a cozinha) e o **fronten
     source venv/bin/activate
 
     # Instale as dependências do Python
-    pip install Flask Flask-Cors
+    pip install -r requirements.txt
 
     # Crie o banco de dados inicial
     python init_db.py
@@ -175,3 +175,17 @@ E caso queira ver os bastidores, é só clicar em "Show Stats"
 ├── .gitignore                # Diz ao Git quais arquivos ignorar.
 └── README.md                 # Este arquivo que você está lendo :)
 ```
+## 🔩 Endpoints da API
+
+A API expõe os seguintes endpoints:
+
+- `POST /add_url`
+  - **Descrição:** Cria um novo link encurtado.
+  - **Body (JSON):** `{ "url": "https://sua-url-longa.com" }`
+  - **Resposta:** `{ "short_url": "http://localhost:5000/codigoCurto" }`
+
+- `GET /<short_code>`
+  - **Descrição:** Redireciona o usuário para a URL original correspondente.
+
+- `GET /stats`
+  - **Descrição:** Retorna uma lista de todos os links, seus originais e a contagem de cliques.
