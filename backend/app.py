@@ -6,11 +6,7 @@ from flask_cors import CORS
 
 #Config
 app = Flask(__name__)
-<<<<<<< HEAD
-CORS(app, origins = "http://localhost:3000") #Toggle CORS for the application
-=======
-CORS(app) #Toggle CORS for the application
->>>>>>> ae849d2 (mudancas finais)
+CORS(app)
 
 #Function to connect the database
 def get_db_connection():
