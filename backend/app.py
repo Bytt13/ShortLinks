@@ -53,7 +53,7 @@ def redirect_to_url(short_code):
     link = conn.execute('SELECT original_link FROM links WHERE short_code = ?', (short_code,)).fetchone()
 
     if link is None:
-        return jsonify({'Error :Link not found'}), 404
+        return jsonify({'Error' : 'Link not found'}), 404
     conn.execute('UPDATE links SET clicks = clicks + 1 WHERE short_code = ?', (short_code,))
     conn.commit()
     conn.close()
