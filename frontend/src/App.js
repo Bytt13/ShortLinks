@@ -7,23 +7,24 @@ function App()
   const [shortUrl, setShortUrl] = useState(''); //Memory for the shortened link
   const [error, setError] = useState(''); //Errors
   const [stats, setStats] = useState([]); //stats for the stats page
-  const [showStats, setShowStats] = useState(false);
-  const api = 'https://shortlinks-hhj7.onrender.com';
+  const [showStats, setShowStats] = useState(false); //to show stats
+  const api = 'https://shortlinks-hhj7.onrender.com'; //my api (backend of the project)
 
-  //to handle with the form
+  //Handles form submission to shorten a URL
   const handleSubmit = async(e)=> {
     e.preventDefault(); // Prevent the default form submission behavior
     //clear old result
     setShortUrl('');
     setError('');
     setShowStats(false);
+
     //Simple Validation
     if(!originalUrl) 
     {
       setError('Please type an URL');
       return;
     }
-
+ // Send the URL to the backend to be shortened
     try {
       const response = await fetch(`${api}/short`, {
         method: 'POST',
@@ -34,6 +35,7 @@ function App()
       });
       const data = await response.json();
 
+      // Handle backend errors
       if(!response.ok)
       {
         throw new Error(data.error || 'Something has gone wrong');
@@ -58,15 +60,16 @@ function App()
         throw new Error('Could not fetch Status');
       }
 
-      setStats(data);
-      setShowStats(true);
+      setStats(data); // Set statistics data
+      setShowStats(true); // Show statistics section
+
 
     } catch (error) {
-      setError(error.message);
+      setError(error.message); // Set error message
     }
   };
 
-  //web page
+  //returning the web page
   return (
     <div className = "App">
       <header>
@@ -81,6 +84,7 @@ function App()
           <button type = "submit" onClick = {handleSubmit}>Short</button>
           <button type = "button" onClick = {handleShowStats} className = "stats-button">Show Stats</button>
       </div>
+      {/* Display the shortened URL if available */}
     {shortUrl && (
       <div className = "result-container">
         <p>Your URL is ready:</p>
@@ -89,11 +93,13 @@ function App()
         </a>
       </div>
     )}
+    {/* Display error messages if any */}
     {error && (
       <div className = "error-container" style = {{ backgroundColor: '#ffdede', borderColor: '#ffb5b5' }}>
         <p style = {{ color: '#d32f2f' }}>{error}</p>
       </div>
     )}
+    {/* Display statistics table if requested */}
     {showStats && (
       <div className = "stats-container">
         <h2>Statistics</h2>
