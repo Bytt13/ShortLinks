@@ -48,7 +48,7 @@ A simple and functional full-stack web application for shortening URLs. Built wi
 
 ## 🚀 Getting Started
 
-[If you want to access the live version, click here](https://shortlinks-1-n5i6.onrender.com). If you need to wait for the application to load due to the free hosting plan, waiting up to 50 seconds should be enough.
+[If you want to access the live version, click here](https://shortlinks-1-n5i6.onrender.com). If you need to wait for the application to load, or load the functions and buttons due to the free hosting plan, waiting up to 50 seconds should be enough.
 
 This project is divided into two parts: the **backend** (the kitchen) and the **frontend** (the dining room). You will need to set up and run both.
 
