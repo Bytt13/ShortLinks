@@ -61,7 +61,7 @@ This project is divided into two parts: the **backend** (the kitchen) and the **
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/Bytt13/ShortLinks.git](https://github.com/Bytt13/ShortLinks.git)
+    git clone https://github.com/Bytt13/ShortLinks.git
     ```
 
 2.  **Navigate to the project folder:**
