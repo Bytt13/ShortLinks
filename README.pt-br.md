@@ -47,7 +47,7 @@ Uma aplicação web full-stack simples e funcional para encurtar URLs. Construí
 
 ## 🚀 Como Executar o Projeto
 
-[Caso queira acessar o remotamente, clique aqui](https://shortlinks-1-n5i6.onrender.com), caso precise esperar a aplicação carregar por conta do deploy gratuito, espere no maximo 50 segundos e será suficiente.
+[Caso queira acessar o remotamente, clique aqui](https://shortlinks-1-n5i6.onrender.com), caso precise esperar a aplicação carregar por conta do deploy gratuito, ou precise esperar os botões exercerem suas funções, espere no maximo 50 segundos e será suficiente.
 
 
 Este projeto é dividido em duas partes: o **backend** (a cozinha) e o **frontend** (o salão). Você precisará configurar e executar ambos.
