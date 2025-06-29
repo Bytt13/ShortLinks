@@ -103,11 +103,12 @@ function App()
     {showStats && (
       <div className = "stats-container">
         <h2>Statistics</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Original URL</th>
-              <th>Short URL</th>
+        <div className = "table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Original URL</th>
+                <th>Short URL</th>
               <th>Clicks</th>
             </tr>
           </thead>
@@ -125,6 +126,7 @@ function App()
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     )}
     </div>
