@@ -91,11 +91,6 @@ th, td{
     word-break: break-all;
 }
 
-th {
-    background-color: #f2f2f2;
-    color: #333;
-}
-
 .table-container {
     max-width: 400px;
     overflow-y: auto;
@@ -123,4 +118,6 @@ th {
     background-color: #f2f2f2;
     position: sticky;
     top: 0;
+    font-weight: bold;
+    white-space: nowrap;
 }
