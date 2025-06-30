@@ -2,28 +2,35 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [originalUrl, setOriginalUrl] = useState(''); // Memória para o link que o usuário digita
-  const [shortUrl, setShortUrl] = useState('');     // Memória para o link encurtado
-  const [error, setError] = useState('');           // Memória para erros
-  const [stats, setStats] = useState([]);           // Memória para os dados das estatísticas
-  const [showStats, setShowStats] = useState(false); // Controla qual "visão" mostrar: formulário ou estatísticas
-  const api = 'https://shortlinks-hhj7.onrender.com'; // Sua API (backend)
+  // State to store the URL typed by the user
+  const [originalUrl, setOriginalUrl] = useState('');
+  // State to store the shortened URL returned by the API
+  const [shortUrl, setShortUrl] = useState('');
+  // State to store error messages
+  const [error, setError] = useState('');
+  // State to store statistics data
+  const [stats, setStats] = useState([]);
+  // State to control which view to show: form or statistics
+  const [showStats, setShowStats] = useState(false);
+  // Your backend API endpoint
+  const api = 'https://shortlinks-hhj7.onrender.com';
 
-  // Lida com o envio do formulário para encurtar uma URL
+  // Handles the form submission to shorten a URL
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Previne o comportamento padrão de submissão do formulário
+    e.preventDefault(); // Prevents default form submission behavior
     
-    // Limpa resultados antigos
+    // Clear previous results
     setShortUrl('');
     setError('');
 
-    // Validação simples
+    // Simple validation
     if (!originalUrl) {
-      setError('Por favor, digite uma URL');
+      setError('Please enter a URL');
       return;
     }
 
     try {
+      // Send the URL to the backend to be shortened
       const response = await fetch(`${api}/short`, {
         method: 'POST',
         headers: {
@@ -34,46 +41,48 @@ function App() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Algo deu errado');
+        // Handle backend errors
+        throw new Error(data.error || 'Something went wrong');
       }
-      setShortUrl(data.shortUrl);
+      setShortUrl(data.shortUrl); // Set the shortened URL
     } catch (error) {
-      setError(error.message);
+      setError(error.message); // Set error message
     }
   };
 
-  // Lida com a busca e exibição das estatísticas
+  // Handles fetching and displaying statistics
   const handleShowStats = async () => {
     setError('');
-    setOriginalUrl(''); // Limpamos a URL para não ficar "sobrando" no estado
+    setOriginalUrl(''); // Clear the URL input
     try {
+      // Fetch statistics from the backend
       const response = await fetch(`${api}/stats`);
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error('Não foi possível buscar as estatísticas');
+        throw new Error('Could not fetch statistics');
       }
 
-      setStats(data);
-      setShowStats(true); // AQUI ESTÁ A MÁGICA: MUDAMOS PARA A "VISÃO DE ESTATÍSTICAS"
+      setStats(data); // Set statistics data
+      setShowStats(true); // Switch to statistics view
     } catch (error) {
-      setError(error.message);
+      setError(error.message); // Set error message
     }
   };
 
-  // Função para voltar para a tela do formulário
+  // Function to return to the form view
   const handleShowForm = () => {
-    setShowStats(false); // VOLTAMOS PARA A "VISÃO DO FORMULÁRIO"
+    setShowStats(false); // Switch back to form view
     setError('');
   };
 
-  // --- RENDERIZAÇÃO CONDICIONAL DA PÁGINA ---
-  // AQUI É A GRANDE MUDANÇA: Usamos um operador ternário para decidir o que renderizar.
-  // Se `showStats` for verdadeiro, mostra a tabela. Senão, mostra o formulário.
+  // --- CONDITIONAL RENDERING OF THE PAGE ---
+  // Use a ternary operator to decide what to render.
+  // If `showStats` is true, show the statistics table. Otherwise, show the form.
   return (
     <div className="App">
       {showStats ? (
-        // ========== VISÃO DE ESTATÍSTICAS ==========
+        // ========== STATISTICS VIEW ==========
         <>
           <header>
             <h1>Statistics</h1>
@@ -103,19 +112,19 @@ function App() {
                 </tbody>
               </table>
             </div>
-            {/* Botão para voltar */}
+            {/* Button to go back */}
             <button type="button" onClick={handleShowForm} className="stats-button" style={{ marginTop: '20px' }}>
               Back
             </button>
           </div>
         </>
       ) : (
-        // ========== VISÃO DO FORMULÁRIO (PADRÃO) ==========
+        // ========== FORM VIEW (DEFAULT) ==========
         <>
           <header>
             <h1>Shorten Your Links</h1>
           </header>
-          {/* Agora o formulário está dentro de uma tag <form> para semântica correta */}
+          {/* The form is inside a <form> tag for correct semantics */}
           <form onSubmit={handleSubmit} className="form-container">
             <input
               type="text"
@@ -129,7 +138,7 @@ function App() {
             </button>
           </form>
 
-          {/* Container para os resultados e erros */}
+          {/* Container for results and errors */}
           <div className='results-area'>
             {shortUrl && (
               <div className="result-container">
