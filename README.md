@@ -154,29 +154,26 @@ And if you want to see what's happening behind the scenes, just click on "Show S
 
 ## 📂 Project Structure
 
-```
 /
-├── backend/                  # O "coração" da lógica (API).
-│   ├── venv/                 # Pasta do ambiente virtual do Python (ignorado pelo Git).
-│   ├── app.py                # O cérebro da API: define rotas e a lógica.
-│   ├── init_db.py            # Script para criar o banco de dados inicial.
-│   ├── schema.sql            # A "planta" do nosso banco de dados.
-│   └── database.db           # O arquivo do banco de dados (ignorado pelo Git).
-├── frontend/                 # O "rosto" da aplicação (Interface).
-│   ├── public/               # Arquivos estáticos, como o index.html.
-│   ├── src/                  # Código-fonte do React.
-│   │   ├── App.js            # Componente principal que une a aplicação.
-│   │   ├── App.css           # Estilos principais.
-│   │   └── index.js          # Ponto de entrada do React.
-│   ├── package.json          # O "RG" do projeto frontend.
+├── backend/                  # The "heart" of the logic (API).
+│   ├── venv/                 # Python virtual environment folder (ignored by Git).
+│   ├── app.py                # The API's brain: defines routes and logic.
+│   ├── init_db.py            # Script to create the initial database.
+│   ├── schema.sql            # The "blueprint" of our database.
+│   └── database.db           # The database file (ignored by Git).
+├── frontend/                 # The "face" of the application (Interface).
+│   ├── public/               # Static files, like index.html.
+│   ├── src/                  # React source code.
+│   │   ├── App.js            # Main component that brings the application together.
+│   │   ├── App.css           # Main styles.
+│   │   └── index.js          # React entry point.
+│   ├── package.json          # The "ID" of the frontend project.
 │   └── ...
-├── .gitignore                # Diz ao Git quais arquivos ignorar.
-└── README.md                 # Este arquivo que você está lendo :)
-```
+├── .gitignore                # Tells Git which files to ignore.
+└── README.md                 # This file you are reading :)
+🔩 API Endpoints
 
-## 🔩 API Endpoints
-
-A API expõe os seguintes endpoints:
+The API exposes the following endpoints:
 
 - `POST /add_url`
   - **Description:** Creates a new shortened link.
