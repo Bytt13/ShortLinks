@@ -154,6 +154,8 @@ And if you want to see what's happening behind the scenes, just click on "Show S
 
 ## 📂 Project Structure
 
+```
+
 /
 ├── backend/                  # The "heart" of the logic (API).
 │   ├── venv/                 # Python virtual environment folder (ignored by Git).
@@ -171,6 +173,9 @@ And if you want to see what's happening behind the scenes, just click on "Show S
 │   └── ...
 ├── .gitignore                # Tells Git which files to ignore.
 └── README.md                 # This file you are reading :)
+
+```
+
 🔩 API Endpoints
 
 The API exposes the following endpoints:
